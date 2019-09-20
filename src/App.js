@@ -1,26 +1,49 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Stuff from './Stuff'
+import Suitcase from './Suitcase'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      objects: [
+        {name: 'shirt', pack: false},
+        {name: 'shoes', pack: false},
+        {name: 'jacket', pack: false}
+      ]
+    }
+  }
+
+  onClick = e => {
+    const newObjects = [...this.state.objects]
+    const newArr = newObjects.map(obj => {
+      if (obj.name === e) {
+        return {
+          ...obj,
+          pack: !obj.pack
+        }
+      } else {
+        return obj
+      }
+    })
+
+    this.setState({
+      objects: newArr
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <Stuff objects={this.state.objects} onClick={this.onClick}/>
+          <Suitcase objects={this.state.objects} onClick={this.onClick}/>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
