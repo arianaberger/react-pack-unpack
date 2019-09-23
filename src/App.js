@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Stuff from './Stuff'
 import Suitcase from './Suitcase'
+import ObjectsComponent from './ObjectsComponent'
 
 class App extends React.Component {
 
@@ -40,6 +41,10 @@ class App extends React.Component {
         <header className="App-header">
           <Stuff objects={this.state.objects} onClick={this.onClick}/>
           <Suitcase objects={this.state.objects} onClick={this.onClick}/>
+
+          <ObjectsComponent />
+          <ObjectsComponent />
+
         </header>
       </div>
     );
