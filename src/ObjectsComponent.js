@@ -2,10 +2,9 @@ import React from 'react';
 
 const ObjectsComponent = (props) => {
 
-  const getObj = props.objects.filter(obj => obj.pack)
-
   const displayObj = () => {
-    return getObj.map(obj => {
+    console.log(props.objects())
+    return props.objects.map(obj => {
       return (
         <div key={obj.name}>
           {obj.name}
@@ -17,7 +16,6 @@ const ObjectsComponent = (props) => {
 
   return (
     <>
-      <h3>Your Packed Items</h3>
       <div>{displayObj()}</div>
     </>
   )
