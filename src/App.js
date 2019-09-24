@@ -42,10 +42,6 @@ class App extends React.Component {
     }
   }
 
-  // getPackedObj = () => {this.state.objects.filter(obj => obj.pack)}
-  // getUnpackedObj = () => {this.state.objects.filter(obj => !obj.pack)}
-
-
   render() {
     const obj = this.state.objects
     const getPackedObj = obj.filter(obj => obj.pack)
