@@ -1,7 +1,5 @@
 import React from 'react';
 import './App.css';
-import Stuff from './Stuff'
-import Suitcase from './Suitcase'
 import ObjectsComponent from './ObjectsComponent'
 
 class App extends React.Component {
@@ -44,22 +42,24 @@ class App extends React.Component {
     }
   }
 
-  getPackedObj = () => {this.state.objects.filter(obj => obj.pack)}
-  getUnpackedObj = () => {this.state.objects.filter(obj => !obj.pack)}
+  // getPackedObj = () => {this.state.objects.filter(obj => obj.pack)}
+  // getUnpackedObj = () => {this.state.objects.filter(obj => !obj.pack)}
 
 
   render() {
-    console.log(this.getObjects(true))
+    const obj = this.state.objects
+    const getPackedObj = obj.filter(obj => obj.pack)
+    const getUnpackedObj = obj.filter(obj => !obj.pack)
+
     return (
       <div className="App">
         <header className="App-header">
-          <Stuff objects={this.state.objects} onClick={this.onClick}/>
-          <Suitcase objects={this.state.objects} onClick={this.onClick}/>
 
           <h3>Items to Pack</h3>
-          <ObjectsComponent objects={() => this.getUnpackedObj} onClick={this.onClick}/>
+          <ObjectsComponent objects={getUnpackedObj} onClick={this.onClick}/>
+
           <h3>Your Packed Items</h3>
-          <ObjectsComponent objects={() => this.getPackedObj} onClick={this.onClick}/>
+          <ObjectsComponent objects={getPackedObj} onClick={this.onClick}/>
 
         </header>
       </div>
